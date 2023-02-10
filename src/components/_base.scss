@@ -1,0 +1,26 @@
+@use 'sass:map';
+
+$spacing: xs, s, m, l, xl;
+
+@mixin spacing($valuesMap) {
+  @each $space in $spacing {
+    @if (map.has-key($valuesMap, $space)) {
+      $innerValue: map.get($valuesMap, $space);
+      @if (is-map($innerValue)) {
+        &--spacing-#{$space} {
+          @each $variant, $variantSpace in $innerValue {
+            padding-#{$variant}: $variantSpace;
+          }
+        }
+      } @else {
+        &--spacing-#{$space} {
+          padding: $innerValue;
+        }
+      }
+    }
+  }
+}
+
+@function is-map($var) {
+  @return type-of($var) == 'map';
+}

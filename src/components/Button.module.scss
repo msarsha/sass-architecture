@@ -1,0 +1,7 @@
+@use "base" as *;
+
+$btnSpacing: (s: (block: 0.5rem, inline: 1rem), l: 1rem, xl: 2rem);
+
+.btn {
+  @include spacing($btnSpacing);
+}
