@@ -1,6 +1,6 @@
 import classnames from "classnames/bind";
 import styles from "./Button.module.scss";
-import {createSpacingClass, Spacing} from "./styling";
+import {createSpacingClass, Spacing} from "../styling/styling";
 
 const cx = classnames.bind(styles);
 
@@ -12,6 +12,8 @@ export interface ButtonProps {
 }
 
 export const Button = ({spacing}: ButtonProps) => {
-    return <button className={cx('btn', createSpacingClass('btn', spacing))}>Click me</button>;
+    return <button className={cx('btn', createSpacingClass('btn', spacing || Spacing.Small))}>
+        Click
+    </button>;
 }
 

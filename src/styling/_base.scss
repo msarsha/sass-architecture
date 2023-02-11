@@ -1,19 +1,18 @@
 @use 'sass:map';
-
-$spacing: xs, s, m, l, xl;
+@use './abstracts' as *;
 
 @mixin spacing($valuesMap) {
-  @each $space in $spacing {
-    @if (map.has-key($valuesMap, $space)) {
-      $innerValue: map.get($valuesMap, $space);
+  @each $size in $sizes {
+    @if (map.has-key($valuesMap, $size)) {
+      $innerValue: map.get($valuesMap, $size);
       @if (is-map($innerValue)) {
-        &--spacing-#{$space} {
+        &--spacing-#{$size} {
           @each $variant, $variantSpace in $innerValue {
             padding-#{$variant}: $variantSpace;
           }
         }
       } @else {
-        &--spacing-#{$space} {
+        &--spacing-#{$size} {
           padding: $innerValue;
         }
       }
